@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <phonemail>
+            <general>
+                <enabled>1</enabled>
+                <domain_mode>auto</domain_mode>
+                <custom_domain>magoarab.com</custom_domain>
+            </general>
+            <whatsapp>
+                <enabled>0</enabled>
+                <api_key></api_key>
+                <instance_id></instance_id>
+                <templates>{
+                    "order_confirmation": "Thank you for your order #{{order_id}}. Your total is {{total}}. We will process your order shortly.",
+                    "shipping_confirmation": "Good news! Your order #{{order_id}} has been shipped. Track your package with number {{tracking_number}}.",
+                    "order_delivered": "Your order #{{order_id}} has been delivered. Thank you for shopping with {{store_name}}!"
+                }</templates>
+            </whatsapp>
+        </phonemail>
+    </default>
+</config>

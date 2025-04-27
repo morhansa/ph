@@ -1,0 +1,27 @@
+/* Admin PhoneMailer Styles */
+.phonemail-test-result {
+    margin-top: 10px;
+    padding: 8px 15px;
+    border-radius: 3px;
+}
+
+.phonemail-test-result.success {
+    background-color: #e5efe5;
+    color: #006400;
+    border: 1px solid #006400;
+}
+
+.phonemail-test-result.error {
+    background-color: #fae5e5;
+    color: #e02b27;
+    border: 1px solid #e02b27;
+}
+
+.admin__control-grouped .phonemail-btn-wrapper {
+    width: auto;
+    margin-top: 20px;
+}
+
+.admin__field.phonemail-field .admin__field-control {
+    position: relative;
+}

@@ -1,0 +1,19 @@
+<div class="field telephone required">
+    <label class="label" for="telephone">
+        <span data-bind="i18n: 'Phone Number'"></span>
+    </label>
+    <div class="control">
+        <input class="input-text"
+               type="tel"
+               data-bind="
+                    value: phoneNumber,
+                    valueUpdate: 'keyup',
+                    attr: {
+                        id: 'telephone',
+                        name: 'telephone',
+                        placeholder: $t('Phone Number'),
+                        'aria-required': true
+                    }"
+               data-validate="{required:true, 'phone-number':true}">
+    </div>
+</div>

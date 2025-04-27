@@ -1,0 +1,44 @@
+<?php
+/**
+ * MagoArab_PhoneMailer
+ *
+ * @category   MagoArab
+ * @package    MagoArab_PhoneMailer
+ */
+?>
+<?php
+/** @var \MagoArab\PhoneMailer\Block\Form\Register $block */
+/** @var \Magento\Framework\Escaper $escaper */
+/** @var \MagoArab\PhoneMailer\Helper\Config $config */
+$config = $block->getData('config') ?? $block->getLayout()->createBlock(\MagoArab\PhoneMailer\Helper\Config::class);
+$isEnabled = $config->isEnabled();
+
+$formData = $block->getFormData();
+?>
+<?php if ($isEnabled): ?>
+<div class="phonemail-notice">
+    <p><?= $block->escapeHtml(__('Phone number is required. Email will be generated automatically.')) ?></p>
+</div>
+<?php endif; ?>
+
+<!-- Hidden email field if PhoneMailer is enabled -->
+<?php if ($isEnabled): ?>
+<div class="field email required" style="display: none;">
+    <label for="email" class="label"><span><?= $block->escapeHtml(__('Email')) ?></span></label>
+    <div class="control">
+        <input type="email" name="email" id="email" value="<?= $block->escapeHtmlAttr($formData->getEmail() ?? '') ?>" 
+               title="<?= $block->escapeHtmlAttr(__('Email')) ?>" class="input-text" 
+               data-validate="{required:true, 'validate-email':true}" autocomplete="off">
+    </div>
+</div>
+<?php endif; ?>
+
+<!-- Telephone field - always visible but required only if PhoneMailer is enabled -->
+<div class="field telephone<?= $isEnabled ? ' required' : '' ?>">
+    <label for="telephone" class="label"><span><?= $block->escapeHtml(__('Phone Number')) ?></span></label>
+    <div class="control">
+        <input type="tel" name="telephone" id="telephone" value="<?= $block->escapeHtmlAttr($formData->getTelephone() ?? '') ?>" 
+               title="<?= $block->escapeHtmlAttr(__('Phone Number')) ?>" class="input-text" 
+               data-validate="<?= $isEnabled ? '{required:true, \'phone-number\':true}' : '{\'phone-number\':true}' ?>">
+    </div>
+</div>

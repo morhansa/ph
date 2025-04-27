@@ -1,0 +1,10 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \MagoArab\PhoneMailer\Helper\Config $config */
+$config = $block->getData('config') ?? $block->getLayout()->createBlock(\MagoArab\PhoneMailer\Helper\Config::class);
+?>
+<?php if ($config->isEnabled()): ?>
+<div class="phonemail-notice">
+    <p><?= __('An email will be automatically generated based on your phone number.') ?></p>
+</div>
+<?php endif; ?>

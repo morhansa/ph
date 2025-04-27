@@ -1,0 +1,74 @@
+<?php
+/**
+ * MagoArab_PhoneMailer
+ *
+ * @category   MagoArab
+ * @package    MagoArab_PhoneMailer
+ */
+
+// @codingStandardsIgnoreFile
+
+/* @var $block \MagoArab\PhoneMailer\Block\Adminhtml\System\Config\Field\TestConnection */
+?>
+<div class="actions actions-test-connection">
+    <?= $block->getButtonHtml() ?>
+</div>
+
+<div class="message-whatsapp-test" style="display: none;">
+    <div class="message message-success success whatsapp-success" style="display: none;">
+        <span class="whatsapp-success-message"></span>
+    </div>
+    <div class="message message-error error whatsapp-error" style="display: none;">
+        <span class="whatsapp-error-message"></span>
+    </div>
+</div>
+
+<script type="text/javascript">
+    require([
+        'jquery',
+        'Magento_Ui/js/modal/alert',
+        'mage/translate'
+    ], function ($, alert, $t) {
+        $('#whatsapp_test_connection').click(function () {
+            var params = {
+                api_key: $('input[name="groups[whatsapp][fields][api_key][value]"]').val(),
+                instance_id: $('input[name="groups[whatsapp][fields][instance_id][value]"]').val(),
+                form_key: window.FORM_KEY
+            };
+
+            $('.message-whatsapp-test').hide();
+            $('.whatsapp-success').hide();
+            $('.whatsapp-error').hide();
+
+            new Ajax.Request('<?= $block->escapeJs($block->getAjaxUrl()) ?>', {
+                parameters: params,
+                loaderArea: false,
+                asynchronous: true,
+                onCreate: function() {
+                    $('#whatsapp_test_connection').text($t('Testing...')).attr('disabled', 'disabled');
+                },
+                onSuccess: function(response) {
+                    $('#whatsapp_test_connection').text($t('Test Connection')).removeAttr('disabled');
+
+                    var result = JSON.parse(response.responseText);
+                    
+                    $('.message-whatsapp-test').show();
+                    
+                    if (result.success) {
+                        $('.whatsapp-success').show();
+                        $('.whatsapp-success-message').text(result.message);
+                    } else {
+                        $('.whatsapp-error').show();
+                        $('.whatsapp-error-message').text(result.message);
+                    }
+                },
+                onFailure: function() {
+                    $('#whatsapp_test_connection').text($t('Test Connection')).removeAttr('disabled');
+                    $('.message-whatsapp-test').show();
+                    $('.whatsapp-error').show();
+                    $('.whatsapp-error-message').text($t('An error occurred while testing the connection.'));
+                }
+            });
+        });
+    });
+</script>

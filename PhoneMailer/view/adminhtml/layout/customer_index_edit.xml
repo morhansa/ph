@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="MagoArab_PhoneMailer::css/phonemail.css"/>
+    </head>
+    <body>
+        <referenceBlock name="customer_form">
+            <block class="Magento\Framework\View\Element\Template" name="phonemail_customer_edit_notice" 
+                   template="MagoArab_PhoneMailer::customer/edit_notice.phtml" ifconfig="phonemail/general/enabled"/>
+        </referenceBlock>
+    </body>
+</page>

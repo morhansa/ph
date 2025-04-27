@@ -1,0 +1,23 @@
+<div class="field required" data-bind="visible: isVisible">
+    <label class="label" for="customer-email">
+        <span data-bind="i18n: 'Email Address'"></span>
+    </label>
+    <div class="control _with-tooltip">
+        <input class="input-text"
+               type="email"
+               data-bind="
+                    textInput: email,
+                    hasFocus: emailFocused,
+                    attr: {
+                        id: 'customer-email',
+                        name: inputName,
+                        placeholder: $t('Email Address'),
+                        'aria-describedby': getDescriptionId(),
+                        'aria-required': required
+                    }"
+               name="username"
+               data-validate="{required:true, 'validate-email':true}" />
+        <!-- Hidden attribute to store configuration -->
+        <div data-role="phonemail-config" data-phonemail-enabled="1" style="display: none;"></div>
+    </div>
+</div>

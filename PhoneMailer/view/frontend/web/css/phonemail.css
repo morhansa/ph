@@ -1,0 +1,48 @@
+/* PhoneMailer Styles */
+.phonemail-notice {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-left: 3px solid #1979c3;
+    font-size: 14px;
+}
+
+.phonemail-phone-field {
+    position: relative;
+}
+
+.phonemail-phone-field .phone-validation-message {
+    color: #e02b27;
+    font-size: 12px;
+    margin-top: 7px;
+}
+
+.phonemail-phone-field.required .control input {
+    padding-right: 30px;
+}
+
+.phonemail-phone-field .control._with-tooltip input {
+    margin-right: 0;
+}
+
+/* Checkout page specific styles */
+.checkout-index-index .phonemail-notice {
+    margin-top: 20px;
+}
+
+/* Admin page specific styles */
+.admin__field.phonemail-phone-field .admin__field-control {
+    position: relative;
+}
+
+/* When PhoneMailer is enabled, make telephone required */
+.phonemail-enabled .field.telephone .control._with-tooltip input {
+    padding-right: 30px;
+}
+
+.phonemail-enabled .field.telephone .label:after {
+    content: '*';
+    color: #e02b27;
+    font-size: 1.2rem;
+    margin: 0 0 0 5px;
+}

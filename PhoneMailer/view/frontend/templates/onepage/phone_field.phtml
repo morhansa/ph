@@ -1,0 +1,19 @@
+<?php
+/**
+ * MagoArab_PhoneMailer
+ *
+ * @category   MagoArab
+ * @package    MagoArab_PhoneMailer
+ */
+?>
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \MagoArab\PhoneMailer\Helper\Config $config */
+$config = $block->getData('config') ?? $block->getLayout()->createBlock(\MagoArab\PhoneMailer\Helper\Config::class);
+$isEnabled = $config->isEnabled();
+?>
+<?php if ($isEnabled): ?>
+<div class="phonemail-notice">
+    <p><?= $block->escapeHtml(__('Phone number is required. Email will be generated automatically.')) ?></p>
+</div>
+<?php endif; ?>
